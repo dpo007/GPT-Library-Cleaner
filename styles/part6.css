@@ -147,20 +147,21 @@
   position:relative;
   width:42px;
   height:24px;
-  padding:0;
-  display:block;
+  padding:2px;
+  display:flex;
+  align-items:center;
+  box-sizing:border-box;
 }
 .lc-switch-thumb{
-  position:absolute;
-  top:50%;
-  left:2px;
+  position:static;
+  flex:0 0 20px;
   width:20px;
   height:20px;
   margin:0;
-  transform:translateY(-50%);
+  transform:none;
 }
 .lc-switch input:checked + .lc-switch-track .lc-switch-thumb{
-  transform:translate(18px,-50%);
+  transform:translateX(18px);
 }
 
 @media(max-width:900px){
