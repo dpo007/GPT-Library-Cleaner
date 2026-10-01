@@ -13,7 +13,7 @@ A browser extension for managing your ChatGPT Library with full-library sync, ty
 - ZIP backup of selected files
 - Batched deletion with retry/backoff
 - Light and dark themes
-- English and Traditional Chinese UI with an in-app language selector and browser-language auto mode
+- English, Traditional Chinese, and 1337speak UI with an in-app language selector and browser-language auto mode
 - Optional automatic synchronization
 - Reopen or hide the Library Cleaner panel from the browser toolbar icon
 
@@ -29,7 +29,7 @@ A browser extension for managing your ChatGPT Library with full-library sync, ty
 
 ## Localization
 
-The panel UI uses `locales.js`, with English (`en`) and Traditional Chinese (`zh-TW`) currently included. Users can choose a language in **Settings → Language** or use **Automatic (Browser)**.
+The panel UI uses `locales.js`, with English (`en`), Traditional Chinese (`zh-TW`), and 1337speak (`1337`) currently included. Users can choose a language in **Settings → Language** or use **Automatic (Browser)**.
 
 To add another language, add the translated message set in `locales.js`, extend the supported locale resolver, and add matching Chrome extension metadata under `_locales/<locale>/messages.json`.
 
@@ -44,7 +44,7 @@ To add another language, add the translated message set in `locales.js`, extend 
 
 ## Version
 
-Current source version: **2.8.0**
+Current source version: **2.9.0**
 
 ## Disclaimer
 
