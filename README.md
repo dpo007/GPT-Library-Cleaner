@@ -50,7 +50,7 @@ Existing stored Light/Dark preferences remain explicit overrides.
 
 ## Version
 
-Current source version: **2.10.0**
+Current source version: **2.10.1**
 
 ## Disclaimer
 
