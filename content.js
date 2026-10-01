@@ -66,7 +66,9 @@
       LCERR_CANCELLED: 'errorCancelled',
       LCERR_DOWNLOAD_UNAVAILABLE: 'errorDownloadUnavailable',
       LCERR_NO_DOWNLOADS: 'errorNoDownloads',
-      LCERR_UNKNOWN: 'unknownError'
+      LCERR_UNKNOWN: 'unknownError',
+      LCERR_NO_ACCOUNT: 'noAccount',
+      LCERR_NO_BRIDGE: 'noBridge'
     }[String(value || '')];
     return key ? t(key) : String(value || t('unknownError'));
   };
@@ -1003,7 +1005,7 @@
     if (!state.accountReady) {
       window.postMessage({ channel: CHANNEL, type:'PING_BRIDGE', payload:{} }, location.origin);
     window.postMessage({ channel: CHANNEL, type:'REQUEST_ACCOUNT', payload:{} }, location.origin);
-      state.syncProgress = { error: state.bridgeReady ? t('noAccount') : t('noBridge') };
+      state.syncProgress = { error: state.bridgeReady ? 'LCERR_NO_ACCOUNT' : 'LCERR_NO_BRIDGE' };
       updateHeader(); updateSettings();
       return;
     }
