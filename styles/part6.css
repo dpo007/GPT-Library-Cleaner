@@ -153,7 +153,8 @@
   box-sizing:border-box;
 }
 .lc-switch-thumb{
-  position:static;
+  position:relative;
+  top:-2px;
   flex:0 0 20px;
   width:20px;
   height:20px;
