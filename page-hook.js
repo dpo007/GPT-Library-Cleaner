@@ -818,11 +818,6 @@
       report({ done:true, phase:'error', error:String(error?.message || error), errors:[...errorCounts.entries()] });
     } finally { backupControllers.delete(requestId); }
   };
-  const fmtZipBytes = n => {
-    const units=['B','KB','MB','GB']; let v=Number(n)||0,i=0;
-    while(v>=1024&&i<units.length-1){v/=1024;i++;}
-    return `${v>=10||i===0?v.toFixed(0):v.toFixed(1)} ${units[i]}`;
-  };
 
   window.fetch = async function(input, init = {}) {
     const req = input instanceof Request ? input : null;
