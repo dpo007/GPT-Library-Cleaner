@@ -1,6 +1,6 @@
 (() => {
   const CHANNEL = 'LC_BRIDGE_V240';
-  const VERSION = '2.10.1';
+  const VERSION = '2.10.2';
   const STORAGE_UI = 'lc_ui_v190';
   const ROW_HEIGHT = 58;
   const OVERSCAN = 8;
