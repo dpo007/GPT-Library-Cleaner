@@ -1,6 +1,6 @@
 (() => {
   const CHANNEL = 'LC_BRIDGE_V240';
-  const VERSION = '2.8.0';
+  const VERSION = '2.9.0';
   const STORAGE_UI = 'lc_ui_v190';
   const ROW_HEIGHT = 58;
   const OVERSCAN = 8;
@@ -57,8 +57,9 @@
   const ui = {};
   const I18N = globalThis.LibraryCleanerI18n;
   const currentLocale = () => I18N.resolveLocale(state.language);
+  const currentFormatLocale = () => I18N.formatLocale(currentLocale());
   const t = (key, vars = {}) => I18N.t(currentLocale(), key, vars);
-  const n = value => Number(value || 0).toLocaleString(currentLocale());
+  const n = value => Number(value || 0).toLocaleString(currentFormatLocale());
   const bridgeText = value => {
     const key = {
       LCERR_LIBRARY_SOURCE: 'errorLibrarySource',
@@ -132,12 +133,12 @@
     const ts = timestamp(value);
     if (!ts) return t('dateUnknown');
     const d = new Date(ts);
-    return new Intl.DateTimeFormat(currentLocale(), { year:'numeric', month:'2-digit', day:'2-digit' }).format(d);
+    return new Intl.DateTimeFormat(currentFormatLocale(), { year:'numeric', month:'2-digit', day:'2-digit' }).format(d);
   };
   const fmtDateTime = value => {
     const ts = timestamp(value);
     if (!ts) return t('neverSynced');
-    return new Intl.DateTimeFormat(currentLocale(), { month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' }).format(new Date(ts));
+    return new Intl.DateTimeFormat(currentFormatLocale(), { month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' }).format(new Date(ts));
   };
   const fmtBytes = bytes => {
     const n = Number(bytes) || 0;
@@ -271,7 +272,7 @@
   const filteredFiles = () => {
     const key = [state.filesVersion, state.filterVersion, state.query, state.typeFilter, state.sort, state.deletableOnly, state.dateOnly, state.cutoffDate].join('|');
     if (state.filteredCache.key === key) return state.filteredCache.rows;
-    const query = state.query.trim().toLocaleLowerCase(currentLocale());
+    const query = state.query.trim().toLocaleLowerCase(currentFormatLocale());
     let rows = [...state.files.values()].filter(file => {
       if (state.deletableOnly && !hasDeletePair(file)) return false;
       if (state.dateOnly && state.cutoffDate) {
@@ -281,13 +282,13 @@
       }
       if (state.typeFilter !== 'all' && file.type !== state.typeFilter) return false;
       if (query) {
-        const haystack = `${file.name} ${file.ext} ${file.mime || ''} ${typeLabel(file.type)} ${file.id}`.toLocaleLowerCase(currentLocale());
+        const haystack = `${file.name} ${file.ext} ${file.mime || ''} ${typeLabel(file.type)} ${file.id}`.toLocaleLowerCase(currentFormatLocale());
         const tokens = query.replace(/\*/g, ' ').split(/\s+/).filter(Boolean);
         if (tokens.length && !tokens.every(token => haystack.includes(token))) return false;
       }
       return true;
     });
-    if (state.sort === 'name') rows.sort((a,b) => a.name.localeCompare(b.name, currentLocale(), { numeric:true, sensitivity:'base' }));
+    if (state.sort === 'name') rows.sort((a,b) => a.name.localeCompare(b.name, currentFormatLocale(), { numeric:true, sensitivity:'base' }));
     else if (state.sort === 'size') rows.sort((a,b) => (b.size || 0) - (a.size || 0));
     else if (state.sort === 'oldest') rows.sort((a,b) => (timestamp(a.created) || Infinity) - (timestamp(b.created) || Infinity));
     else rows.sort((a,b) => (timestamp(b.created) || 0) - (timestamp(a.created) || 0));
@@ -467,7 +468,7 @@
             <section class="lc-view" data-view="settings">
               <div class="lc-page-heading"><div><h2 data-i18n="settings"></h2><p data-i18n="settingsDescription"></p></div></div>
               <div class="lc-settings-list">
-                <div class="lc-setting-row"><div><strong data-i18n="language"></strong><span data-i18n="languageDescription"></span></div><select id="lc-language" class="lc-select"><option value="auto" data-i18n="languageAuto"></option><option value="en" data-i18n="languageEnglish"></option><option value="zh-TW" data-i18n="languageTraditionalChinese"></option></select></div>
+                <div class="lc-setting-row"><div><strong data-i18n="language"></strong><span data-i18n="languageDescription"></span></div><select id="lc-language" class="lc-select"><option value="auto" data-i18n="languageAuto"></option><option value="en" data-i18n="languageEnglish"></option><option value="zh-TW" data-i18n="languageTraditionalChinese"></option><option value="1337" data-i18n="language1337"></option></select></div>
                 <div class="lc-setting-row"><div><strong data-i18n="appearance"></strong><span data-i18n="appearanceDescription"></span></div><button class="lc-button lc-button-secondary" id="lc-theme-settings" data-i18n="toggleThemeButton"></button></div>
                 <div class="lc-setting-row"><div><strong data-i18n="deleteSpeed"></strong><span data-i18n="deleteSpeedDescription"></span></div><select id="lc-concurrency" class="lc-select"><option value="1" data-i18n="speedStable"></option><option value="2" data-i18n="speedStandard"></option><option value="3" data-i18n="speedFast"></option></select></div>
                 <div class="lc-setting-row"><div><strong data-i18n="currentAccountIndex"></strong><span id="lc-index-info"></span></div><button class="lc-button lc-button-secondary" id="lc-clear-index" data-i18n="clearLocalIndex"></button></div>
@@ -891,7 +892,7 @@
       } else if (!coverage.count) {
         ui.cleanCoverage.textContent = t('noCreationDates');
       } else {
-        const d = new Intl.DateTimeFormat(currentLocale(),{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(specifiedDateStartTimestamp()));
+        const d = new Intl.DateTimeFormat(currentFormatLocale(),{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(specifiedDateStartTimestamp()));
         ui.cleanCoverage.textContent = t('cleanCoverageRange', { date:d });
       }
     }
@@ -926,7 +927,7 @@
       } else if (state.cleanTypeFilter !== 'all' && allDateRows.length) {
         ui.cleanEmpty.textContent = t('cleanNoType', { type:typeLabel(state.cleanTypeFilter) });
       } else {
-        const d = new Intl.DateTimeFormat(currentLocale(),{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(specifiedDateStartTimestamp()));
+        const d = new Intl.DateTimeFormat(currentFormatLocale(),{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(specifiedDateStartTimestamp()));
         ui.cleanEmpty.textContent = t('cleanNoFilesBefore', { date:d });
       }
     }
