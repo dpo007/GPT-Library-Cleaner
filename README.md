@@ -12,7 +12,7 @@ A browser extension for managing your ChatGPT Library with full-library sync, ty
 - Bulk selection from both File Manager and Smart Clean
 - ZIP backup of selected files
 - Batched deletion with retry/backoff
-- Light and dark themes
+- Automatic system/browser theme following, plus explicit light and dark overrides
 - English, Traditional Chinese, and 1337speak UI with an in-app language selector and browser-language auto mode
 - Optional automatic synchronization
 - Reopen or hide the Library Cleaner panel from the browser toolbar icon
@@ -33,6 +33,12 @@ The panel UI uses `locales.js`, with English (`en`), Traditional Chinese (`zh-TW
 
 To add another language, add the translated message set in `locales.js`, extend the supported locale resolver, and add matching Chrome extension metadata under `_locales/<locale>/messages.json`.
 
+## Appearance
+
+By default, Library Cleaner follows the browser/operating-system `prefers-color-scheme` setting and updates live when that preference changes. Users can override this in **Settings → Appearance** with **Light** or **Dark**.
+
+Existing stored Light/Dark preferences remain explicit overrides.
+
 ## Notes
 
 
@@ -44,7 +50,7 @@ To add another language, add the translated message set in `locales.js`, extend 
 
 ## Version
 
-Current source version: **2.9.0**
+Current source version: **2.10.0**
 
 ## Disclaimer
 

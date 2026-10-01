@@ -1,10 +1,11 @@
 (() => {
   const CHANNEL = 'LC_BRIDGE_V240';
-  const VERSION = '2.9.0';
+  const VERSION = '2.10.0';
   const STORAGE_UI = 'lc_ui_v190';
   const ROW_HEIGHT = 58;
   const OVERSCAN = 8;
   const PREVIEW_CONCURRENCY = 4;
+  const systemThemeQuery = matchMedia('(prefers-color-scheme: dark)');
 
   const state = {
     accountReady: false,
@@ -20,7 +21,7 @@
     sort: 'newest',
     deletableOnly: false,
     activeTab: 'files',
-    theme: matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+    theme: 'auto',
     syncing: false,
     syncRequestId: '',
     enriching: false,
@@ -195,7 +196,7 @@
   const loadUi = async () => {
     const data = await chrome.storage.local.get([STORAGE_UI, 'lc_ui_v160', 'lc_ui_v120', 'cglc_ui_v120']);
     const settings = data[STORAGE_UI] || data.lc_ui_v160 || data.lc_ui_v120 || data.cglc_ui_v120 || {};
-    if (['light','dark'].includes(settings.theme)) state.theme = settings.theme;
+    if (['auto','light','dark'].includes(settings.theme)) state.theme = settings.theme;
     if (I18N.supported.includes(settings.language)) state.language = settings.language;
     if (Object.keys(typeSets).concat('all','other').includes(settings.typeFilter)) state.typeFilter = settings.typeFilter;
     if (Object.keys(typeSets).concat('all','other').includes(settings.cleanTypeFilter)) state.cleanTypeFilter = settings.cleanTypeFilter;
@@ -469,7 +470,7 @@
               <div class="lc-page-heading"><div><h2 data-i18n="settings"></h2><p data-i18n="settingsDescription"></p></div></div>
               <div class="lc-settings-list">
                 <div class="lc-setting-row"><div><strong data-i18n="language"></strong><span data-i18n="languageDescription"></span></div><select id="lc-language" class="lc-select"><option value="auto" data-i18n="languageAuto"></option><option value="en" data-i18n="languageEnglish"></option><option value="zh-TW" data-i18n="languageTraditionalChinese"></option><option value="1337" data-i18n="language1337"></option></select></div>
-                <div class="lc-setting-row"><div><strong data-i18n="appearance"></strong><span data-i18n="appearanceDescription"></span></div><button class="lc-button lc-button-secondary" id="lc-theme-settings" data-i18n="toggleThemeButton"></button></div>
+                <div class="lc-setting-row"><div><strong data-i18n="appearance"></strong><span data-i18n="appearanceDescription"></span></div><select id="lc-theme-settings" class="lc-select"><option value="auto" data-i18n="themeAutomatic"></option><option value="light" data-i18n="themeLight"></option><option value="dark" data-i18n="themeDark"></option></select></div>
                 <div class="lc-setting-row"><div><strong data-i18n="deleteSpeed"></strong><span data-i18n="deleteSpeedDescription"></span></div><select id="lc-concurrency" class="lc-select"><option value="1" data-i18n="speedStable"></option><option value="2" data-i18n="speedStandard"></option><option value="3" data-i18n="speedFast"></option></select></div>
                 <div class="lc-setting-row"><div><strong data-i18n="currentAccountIndex"></strong><span id="lc-index-info"></span></div><button class="lc-button lc-button-secondary" id="lc-clear-index" data-i18n="clearLocalIndex"></button></div>
                 <div class="lc-setting-row"><div><strong data-i18n="autoSync"></strong><span data-i18n="autoSyncDescription"></span></div><label class="lc-switch"><input type="checkbox" id="lc-auto-sync"><span class="lc-switch-track"><span class="lc-switch-thumb"></span></span></label></div>
@@ -528,7 +529,12 @@
     ui.launcher.addEventListener('click', () => { state.panelOpen = true; updatePanelOpen(); setTimeout(renderVirtualRows, 0); });
     ui.close.addEventListener('click', () => { state.panelOpen = false; updatePanelOpen(); });
     ui.theme.addEventListener('click', toggleTheme);
-    ui.themeSettings.addEventListener('click', toggleTheme);
+    ui.themeSettings.addEventListener('change', event => {
+      state.theme = ['auto','light','dark'].includes(event.target.value) ? event.target.value : 'auto';
+      applyTheme();
+      saveUi();
+      updateSettings();
+    });
     ui.sync.addEventListener('click', () => state.syncing ? stopSync() : state.enriching ? stopMetadataEnrichment() : startSync(false));
     ui.settingsSync.addEventListener('click', () => startSync(false));
 
@@ -682,14 +688,27 @@
     ui.launcher.classList.toggle('is-hidden', state.panelOpen);
   };
 
+  const resolvedTheme = () => state.theme === 'auto' ? (systemThemeQuery.matches ? 'dark' : 'light') : state.theme;
+
   const applyTheme = () => {
-    ui.root.dataset.theme = state.theme;
-    ui.theme.innerHTML = state.theme === 'dark' ? `${iconSvg('sun',15)}<span>${t('light')}</span>` : `${iconSvg('moon',15)}<span>${t('dark')}</span>`;
+    const resolved = resolvedTheme();
+    ui.root.dataset.theme = resolved;
+    ui.theme.innerHTML = resolved === 'dark'
+      ? `${iconSvg('sun',15)}<span>${t('light')}</span>`
+      : `${iconSvg('moon',15)}<span>${t('dark')}</span>`;
   };
+
   const toggleTheme = () => {
-    state.theme = state.theme === 'dark' ? 'light' : 'dark';
+    state.theme = resolvedTheme() === 'dark' ? 'light' : 'dark';
     applyTheme();
     saveUi();
+    updateSettings();
+  };
+
+  const handleSystemThemeChange = () => {
+    if (state.theme !== 'auto') return;
+    applyTheme();
+    updateSettings();
   };
 
   const updateTabs = () => {
@@ -969,6 +988,7 @@
 
   const updateSettings = () => {
     ui.language.value = state.language;
+    ui.themeSettings.value = state.theme;
     ui.concurrency.value = String(state.concurrency);
     ui.autoSync.checked = !!state.autoSync;
     ui.indexInfo.textContent = state.accountReady ? t('indexCurrentAccount', { count:n(state.files.size) }) : t('identifyingAccount');
@@ -1238,6 +1258,7 @@
   const init = async () => {
     await loadUi();
     await mount();
+    systemThemeQuery.addEventListener?.('change', handleSystemThemeChange);
     window.postMessage({ channel: CHANNEL, type:'REQUEST_ACCOUNT', payload:{} }, location.origin);
     state.routeTimer = setInterval(applyRouteVisibility, 900);
     window.addEventListener('focus', () => window.postMessage({ channel:CHANNEL, type:'REQUEST_ACCOUNT', payload:{} }, location.origin));
