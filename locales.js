@@ -57,6 +57,7 @@
       languageAuto: 'Automatic (Browser)',
       languageEnglish: 'English',
       languageTraditionalChinese: '繁體中文',
+      language1337: '1337speak',
       appearance: 'Appearance',
       appearanceDescription: 'Light and dark mode',
       toggleThemeButton: 'Toggle theme',
@@ -146,6 +147,174 @@
       deletedFiles: { one: '{count} file', other: '{count} files' },
       failedFiles: { one: '{count} file', other: '{count} files' }
     },
+    '1337': {
+          "openCleaner": "0p3n L1br4ry Cl34n3r",
+          "brandSlogan": "0r64n1z3, b4ck up 4nd cl34n up ChatGPT f1l35",
+          "mainFeatures": "M41n f347ur35",
+          "tabFiles": "F1l3 M4n463r",
+          "tabClean": "5m4r7 Cl34n",
+          "tabBackup": "B4ckup & 3xp0r7",
+          "tabSettings": "53771n65",
+          "totalFiles": "7074l f1l35",
+          "selected": "53l3c73d",
+          "totalSize": "7074l 51z3",
+          "preparingLibrary": "Pr3p4r1n6 l1br4ry",
+          "secureConnection": "3574bl15h1n6 4 53cur3 c0nn3c710n",
+          "connecting": "C0nn3c71n6",
+          "sync": "5ync",
+          "toggleTheme": "7066l3 l16h7/d4rk m0d3",
+          "close": "Cl053",
+          "searchPlaceholder": "534rch f1l3n4m3, 7yp3, ID, 0r c0n73n7…",
+          "clearSearch": "Cl34r 534rch",
+          "sort": "50r7",
+          "sortNewest": "Cr3473d d473 (n3w → 0ld)",
+          "sortOldest": "Cr3473d d473 (0ld → n3w)",
+          "sortName": "N4m3 4 → Z",
+          "sortSize": "51z3 l4r63 → 5m4ll",
+          "selectAllResults": "53l3c7 4ll r35ul75",
+          "deselectAll": "D353l3c7 4ll",
+          "first100": "F1r57 100",
+          "clear": "Cl34r",
+          "selectCurrentResults": "53l3c7 curr3n7 r35ul75",
+          "deselectCurrentResults": "D353l3c7 curr3n7 r35ul75",
+          "name": "N4m3",
+          "type": "7yp3",
+          "extension": "3x73n510n",
+          "created": "Cr3473d",
+          "size": "51z3",
+          "noMatchingFiles": "N0 f1l35 m47ch",
+          "adjustSearchFilters": "7ry ch4n61n6 y0ur 534rch 0r f1l73r5.",
+          "smartClean": "5m4r7 Cl34n",
+          "smartCleanDescription": "F1nd f1l35 cr3473d b3f0r3 4 5p3c1f13d d473, pr3v13w 7h3m, 7h3n 53l3c7 wh47 70 r3m0v3.",
+          "cutoffDate": "Cu70ff d473",
+          "cleanableFiles": "Cl34n4bl3 f1l35",
+          "selectCleanResults": "53l3c7 curr3n7 cl34nup r35ul75",
+          "deselectCleanResults": "D353l3c7 curr3n7 cl34nup r35ul75",
+          "cleanPrompt": "Ch0053 4 cu70ff d473 70 5h0w f1l35 cr3473d b3f0r3 17.",
+          "backupExport": "B4ckup & 3xp0r7",
+          "backupDescription": "P4ck463 53l3c73d f1l35 1n70 4 ZIP, 7h3n d3c1d3 wh37h3r 70 cl34n 7h3m up.",
+          "zipName": "ZIP n4m3",
+          "currentSelection": "Curr3n7 53l3c710n",
+          "backupSelected": "B4ck up 53l3c73d",
+          "backupReady": "53l3c7 f1l35 70 574r7 4 b4ckup.",
+          "settings": "53771n65",
+          "settingsDescription": "M4n463 4pp34r4nc3, l4n6u463, 5ync, 4nd 7h3 l0c4l 1nd3x f0r 7h3 curr3n7 4cc0un7.",
+          "language": "L4n6u463",
+          "languageDescription": "Ch0053 7h3 1n73rf4c3 l4n6u463 0r f0ll0w y0ur br0w53r.",
+          "languageAuto": "4u70m471c (Br0w53r)",
+          "languageEnglish": "3n6l15h",
+          "languageTraditionalChinese": "繁體中文",
+          "appearance": "4pp34r4nc3",
+          "appearanceDescription": "L16h7 4nd d4rk m0d3",
+          "toggleThemeButton": "7066l3 7h3m3",
+          "deleteSpeed": "D3l3710n 5p33d",
+          "deleteSpeedDescription": "574nd4rd 15 r3c0mm3nd3d f0r 4 b4l4nc3 0f 5p33d 4nd 574b1l17y.",
+          "speedStable": "574bl3",
+          "speedStandard": "574nd4rd",
+          "speedFast": "F457",
+          "currentAccountIndex": "Curr3n7 4cc0un7 1nd3x",
+          "notBuilt": "N07 bu1l7 y37",
+          "clearLocalIndex": "Cl34r l0c4l 1nd3x",
+          "autoSync": "4u70m471c 5ync",
+          "autoSyncDescription": "4u70m471c4lly ch3ck f0r n3w 4nd ch4n63d f1l35 wh3n y0u 0p3n 7h3 L1br4ry.",
+          "syncSetting": "5ync",
+          "notSynced": "N07 5ync3d y37",
+          "syncNow": "5ync n0w",
+          "noFilesSelected": "N0 f1l35 53l3c73d",
+          "selectionHint": "53l3c7 f1l35 70 b4ck up 0r d3l373",
+          "backupSelection": "B4ck up 53l3c710n",
+          "deleteSelection": "D3l373 53l3c710n",
+          "light": "L16h7",
+          "dark": "D4rk",
+          "typeAll": "4ll",
+          "typeImage": "1m4635",
+          "typePdf": "PDF",
+          "typeDocument": "D0cum3n75",
+          "typeSpreadsheet": "5pr34d5h3375",
+          "typePresentation": "Pr353n74710n5",
+          "typeArchive": "4rch1v35",
+          "typeMedia": "M3d14",
+          "typeOther": "07h3r",
+          "unnamedFile": "Un717l3d f1l3",
+          "dateUnknown": "D473 unkn0wn",
+          "neverSynced": "N3v3r 5ync3d",
+          "identifyingAccount": "1d3n71fy1n6 4cc0un7",
+          "connected": "C0nn3c73d",
+          "syncing": "5ync1n6",
+          "page": "P463 {page}",
+          "enriching": "C0mpl371n6 f1l3 1nf0rm4710n",
+          "fetchingDateSize": "63771n6 d4735 4nd 51z35",
+          "stop": "570p",
+          "syncFailed": "5ync f41l3d",
+          "syncComplete": "5ync c0mpl373",
+          "getFullFileList": "637 7h3 c0mpl373 f1l3 l157",
+          "missingDeleteInfo": "M1551n6 1d3n71f13r5 r3qu1r3d f0r d3l3710n",
+          "sizeUnavailable": "51z3 n07 pr0v1d3d",
+          "cleanCoveragePrompt": "Ch0053 4 d473 70 l157 f1l35 cr3473d b3f0r3 7h47 d4y; 7h3 53l3c73d d473 1753lf 15 n07 1nclud3d.",
+          "noCreationDates": "7h3 curr3n7 l1br4ry d035 n07 h4v3 u54bl3 cr34710n d4735 y37.",
+          "cleanCoverageRange": "5h0w1n6 f1l35 cr3473d b3f0r3 {date}; {date} 1753lf 15 n07 1nclud3d.",
+          "cleanNoType": "7h3r3 4r3 n0 “{type}” f1l35 b3f0r3 7h3 53l3c73d d473.",
+          "cleanNoFilesBefore": "7h3r3 4r3 n0 cl34n4bl3 f1l35 b3f0r3 {date}.",
+          "backupPacking": "Cr3471n6 ZIP",
+          "backupSaving": "Pr3p4r1n6 d0wnl04d",
+          "backupDone": "B4ckup c0mpl373",
+          "backupFailed": "B4ckup f41l3d",
+          "backupStopped": "B4ckup 570pp3d",
+          "backupDownloading": "D0wnl04d1n6",
+          "failed": "F41l3d {count}",
+          "stopBackup": "570p b4ckup",
+          "indexCurrentAccount": "{count} 1nd3x3d 173m5 · curr3n7 4cc0un7 0nly",
+          "resumingSync": "R35um1n6 5ync",
+          "checkingUpdates": "Ch3ck1n6 f0r upd4735",
+          "syncingLibrary": "5ync1n6 l1br4ry",
+          "lastSync": "L457 5ync {date}",
+          "noAccount": "Curr3n7 ChatGPT 4cc0un7 h45 n07 b33n 1d3n71f13d y37",
+          "noBridge": "7h3 p463 br1d63 15 n07 c0nn3c73d y37",
+          "unknownError": "Unkn0wn 3rr0r",
+          "confirmDelete": "D3l373 {count} fr0m 7h3 ChatGPT L1br4ry?",
+          "approxSize": "4ppr0x1m473 51z3: {size}",
+          "deleteWarning": "7h15 w1ll r3m0v3 7h3 53l3c73d f1l35 fr0m y0ur ChatGPT L1br4ry.",
+          "deletePartial": "D3l3710n f1n15h3d, bu7 {count} f41l3d.",
+          "deleteRetry": "F41l3d f1l35 r3m41n 53l3c73d 50 y0u c4n 7ry 4641n.",
+          "deleteSuccess": "D3l373d {count}.",
+          "confirmClearIndex": "Cl34r 7h3 l0c4l 1nd3x f0r 7h3 curr3n7 ChatGPT 4cc0un7?",
+          "clearIndexWarning": "7h15 d035 n07 d3l373 4ny f1l35 fr0m ChatGPT.",
+          "errorLibrarySource": "N0 p461n473d L1br4ry d474 50urc3 15 4v41l4bl3 y37. R3fr35h 7h3 L1br4ry 4nd 5ync 4641n.",
+          "errorSyncJson": "7h3 5ync r35p0n53 w45 n07 v4l1d J50N.",
+          "errorCancelled": "C4nc3ll3d",
+          "errorDownloadUnavailable": "Un4bl3 70 r37r13v3 d0wnl04d c0n73n7.",
+          "errorNoDownloads": "N0 f1l35 w3r3 d0wnl04d3d 5ucc355fully.",
+          "backupPacked": "{count} p4ck3d",
+          "filesFound": {
+                "one": "{count} f1l3",
+                "other": "{count} f1l35"
+          },
+          "filesSelected": {
+                "one": "{count} f1l3 53l3c73d",
+                "other": "{count} f1l35 53l3c73d"
+          },
+          "filesCount": {
+                "one": "{count} f1l3",
+                "other": "{count} f1l35"
+          },
+          "itemsCount": {
+                "one": "{count} 173m",
+                "other": "{count} 173m5"
+          },
+          "moreFiles": {
+                "one": "{count} m0r3 f1l3; 53l3c7 4ll 1nclud35 17.",
+                "other": "{count} m0r3 f1l35; 53l3c7 4ll 1nclud35 7h3m."
+          },
+          "deletedFiles": {
+                "one": "{count} f1l3",
+                "other": "{count} f1l35"
+          },
+          "failedFiles": {
+                "one": "{count} f1l3",
+                "other": "{count} f1l35"
+          },
+          "language1337": "1337speak"
+    },
     'zh-TW': {
       openCleaner: '開啟 Library Cleaner',
       brandSlogan: '整理、備份與清理 ChatGPT 檔案',
@@ -203,6 +372,7 @@
       languageAuto: '自動（瀏覽器）',
       languageEnglish: 'English',
       languageTraditionalChinese: '繁體中文',
+      language1337: '1337speak',
       appearance: '外觀',
       appearanceDescription: '日間與夜間模式',
       toggleThemeButton: '切換主題',
@@ -297,10 +467,12 @@
   const normalize = value => {
     const raw = String(value || '').trim();
     if (/^zh(?:-|_)/i.test(raw)) return 'zh-TW';
+    if (/^(?:1337|leet|leetspeak)$/i.test(raw)) return '1337';
     return 'en';
   };
 
   const resolveLocale = preference => preference === 'auto' ? normalize(navigator.language) : normalize(preference);
+  const formatLocale = locale => normalize(locale) === '1337' ? 'en' : normalize(locale);
 
   const interpolate = (template, vars) => String(template).replace(/\{(\w+)\}/g, (_, key) => vars[key] == null ? '' : String(vars[key]));
 
@@ -309,7 +481,7 @@
     let value = messages[resolved]?.[key] ?? messages.en[key] ?? key;
     if (value && typeof value === 'object') {
       const count = Number(vars.count);
-      const form = new Intl.PluralRules(resolved).select(Number.isFinite(count) ? count : 0);
+      const form = new Intl.PluralRules(formatLocale(resolved)).select(Number.isFinite(count) ? count : 0);
       value = value[form] ?? value.other ?? Object.values(value)[0];
     }
     return interpolate(value, vars);
@@ -318,7 +490,8 @@
   globalThis.LibraryCleanerI18n = Object.freeze({
     messages,
     resolveLocale,
+    formatLocale,
     t,
-    supported: Object.freeze(['auto', 'en', 'zh-TW'])
+    supported: Object.freeze(['auto', 'en', 'zh-TW', '1337'])
   });
 })();
